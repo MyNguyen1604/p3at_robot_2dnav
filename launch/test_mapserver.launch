@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+
+   <!-- <master auto="start"/> -->
+   <!-- Run the map server -->
+   <!--<node pkg="map_server" type="map_server" name="map_server" args="$(find p3at_robot_2dnav)/maps/map_201BC1_full_2.pgm 0.05" /> --> <!-- Phai xac dinh dung resolution de phat sinh loi "The origin for the sensor at (..., ..) is out of map bounds. So, the costmap cannot raytrace for it." Nen dung file yaml -->
+   
+   <node pkg="map_server" type="map_server" name="map_server" args="$(find p3at_robot_2dnav)/maps/map_simulation_1.yaml" /> 
+<!--   <node pkg="map_server" type="map_server" name="map_server" args="$(find p3at_robot_2dnav)/maps/map_201BC1_full_1.yaml" /> --> 
+      
+</launch>

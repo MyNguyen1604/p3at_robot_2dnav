@@ -1,0 +1,13 @@
+local_costmap:
+  global_frame: map #odom
+  robot_base_frame: base_link
+  update_frequency: 5.0
+#  update_frequency: 3.368
+  publish_frequency: 3.0 #The "publish_frequency" parameter determines the rate, in Hz, at which the costmap will publish visualization information
+  static_map: false
+  rolling_window: true #Setting the "rolling_window" parameter to true means that the costmap will remain centered around the robot as the robot moves through the world 
+  width: 5.0 #The "width," "height," and "resolution" parameters set the width (meters), height (meters), and resolution (meters/cell) of the costmap
+  height: 5.0
+  resolution: 0.05
+  transform_tolerance: 0.2
+  map_type: costmap

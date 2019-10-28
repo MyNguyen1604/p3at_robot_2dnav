@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<launch>
+
+   <!-- <master auto="start"/> -->
+   <!-- Run the map server -->
+   <!--<node pkg="map_server" type="map_server" name="map_server" args="$(find p3at_robot_2dnav)/maps/map_201BC1_full_2.pgm 0.05" /> --> <!-- Phai xac dinh dung resolution de phat sinh loi "The origin for the sensor at (..., ..) is out of map bounds. So, the costmap cannot raytrace for it." Nen dung file yaml -->
+   
+   <node pkg="map_server" type="map_server" name="map_server" args="$(find p3at_robot_2dnav)/maps/map_simulation_1.yaml" /> 
+   
+   
+   <!-- Run AMCL -->
+   <include file="$(find amcl)/examples/amcl_diff_2.launch"/>
+   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+     <rosparam file="$(find p3at_robot_2dnav)/param/experiment/costmap_common_params.yaml" command="load" ns="global_costmap"/>
+     <rosparam file="$(find p3at_robot_2dnav)/param/experiment/costmap_common_params.yaml" command="load" ns="local_costmap"/>
+     <rosparam file="$(find p3at_robot_2dnav)/param/experiment/local_costmap_params.yaml" command="load" />
+     <rosparam file="$(find p3at_robot_2dnav)/param/experiment/global_costmap_params.yaml" command="load" />
+     <rosparam file="$(find p3at_robot_2dnav)/param/experiment/base_local_planner_params.yaml" command="load" />
+<!--     <param name="base_global_planner" type="string" value="global_planner/GlobalPlanner" />-->
+      <remap from="/cmd_vel" to="/RosAria/cmd_vel" /> 
+   </node>
+   
+</launch>
